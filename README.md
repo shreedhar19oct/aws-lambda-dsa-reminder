@@ -28,17 +28,6 @@ Amazon SES Email Delivery
 
 ---
 
-## 📂 Project Structure
-
-aws-lambda-dsa-reminder/
-│
-├── index.js          # Lambda handler
-├── local-test.js     # Local testing script
-├── .env.example      # Example environment variables file
-├── package.json
-└── README.md
-
-
 🛡 Security
 
 🔒 .env is ignored using .gitignore
@@ -47,7 +36,8 @@ aws-lambda-dsa-reminder/
 ⚙️ Environment variables handle all secrets (local + cloud)
 📬 SES access is restricted and monitored
 🧩 Lambda runs using a dedicated execution role
-🎯 Summary
+
+---
 
 🎯 Summary
 
