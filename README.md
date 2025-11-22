@@ -31,28 +31,31 @@ Amazon SES Email Delivery
 ## 📂 Project Structure
 
 aws-lambda-dsa-reminder/
-│── index.js # Lambda handler
-│── local-test.js # Local testing
-│── .env.example # Example env file
-│── package.json
+│
+├── index.js          # Lambda handler
+├── local-test.js     # Local testing script
+├── .env.example      # Example environment variables file
+├── package.json
 └── README.md
+
 
 🛡 Security
 
-- .env is safely ignored via .gitignore
-- IAM permissions follow least-privilege best practices
-- No sensitive credentials are committed to GitHub
-- Environment variables are used for local + cloud secrets
-- SES access is restricted and monitored
-- Lambda uses a dedicated execution role
+🔒 .env is ignored using .gitignore
+🔐 IAM permissions strictly follow least-privilege principles
+🚫 No sensitive credentials are committed to GitHub
+⚙️ Environment variables handle all secrets (local + cloud)
+📬 SES access is restricted and monitored
+🧩 Lambda runs using a dedicated execution role
+🎯 Summary
 
 🎯 Summary
 
 This project demonstrates:
 
--Strong AWS serverless architecture knowledge
--Practical implementation of Lambda + SES + EventBridge
--Understanding of IAM roles, policies, and security practices
--Ability to schedule automated workflows using cron expressions
--Clean GitHub project structure and environment-based configuration
--Real-world experience designing production-ready AWS solutions
+- Strong AWS serverless architecture knowledge
+- Practical implementation of Lambda + SES + EventBridge
+- Understanding of IAM roles, policies, and secure access
+- Ability to build scheduled automation using Cron expressions
+- Clean and professional GitHub project organization
+- Real-world experience designing production-ready AWS solutions
