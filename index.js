@@ -16,28 +16,45 @@ export const handler = async () => {
     };
   }
 
-  const params = {
-    Destination: { ToAddresses: recipients },
-    Message: {
-      Body: { Text: { Data: "Start solving DSA for a better Tomorrow." } },
-      Subject: { Data: "DSA Daily Reminder" }
-    },
-    Source: sender
-  };
+  // Send individually so each person gets a personalized body including their email
+  const results = [];
+  for (const to of recipients) {
+    // personalize: use recipient email in the message
+    const personalizedBody = `
+Hey ${to} 👋
 
-  try {
-    // use the ses variable we created
-    const response = await ses.send(new SendEmailCommand(params));
-    console.log("SES send response:", response);
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ message: "Email sent successfully", messageId: response.MessageId || null })
+Here is your daily reminder to practice Data Structures & Algorithms.
+
+Consistency compounds — even 1 hour a day will build massive long-term impact.
+You’ve got this! 💪
+
+Best,
+Your AWS Daily Reminder Bot
+`;
+
+    const params = {
+      Destination: { ToAddresses: [to] },
+      Message: {
+        Body: { Text: { Data: personalizedBody } },
+        Subject: { Data: "DSA Daily Reminder" }
+      },
+      Source: sender
     };
-  } catch (err) {
-    console.error("SES send error:", err);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ message: "Error sending email", error: err.message || err.toString() })
-    };
+
+    try {
+      const response = await ses.send(new SendEmailCommand(params));
+      console.log(`SES send response for ${to}:`, response);
+      results.push({ to, status: "sent", messageId: response.MessageId || null });
+    } catch (err) {
+      console.error(`SES send error for ${to}:`, err);
+      results.push({ to, status: "error", error: err.message || String(err) });
+      // continue sending to other recipients
+    }
   }
+
+  // overall response: includes per-recipient send results
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ message: "Send attempts completed", results })
+  };
 };
