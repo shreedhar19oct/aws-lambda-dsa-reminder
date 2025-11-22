@@ -1,0 +1,17 @@
+{
+  "name": "aws-poc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:local": "node local-test.js"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-ses": "^3.936.0",
+    "dotenv": "^17.2.3"
+  }
+}
