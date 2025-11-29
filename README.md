@@ -21,6 +21,7 @@ Amazon SES Email Delivery
 - Serverless architecture (no servers to manage)
 - AWS Lambda (Node.js 18)
 - Email notifications using Amazon SES
+- customized email containing name of the user.
 - Daily automation via EventBridge Cron
 - Secure IAM roles with least-privilege access
 - Local testing support using `.env`
